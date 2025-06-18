@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="events.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="main-container">
+    <form id="formulario" class="formulario">
+      <label for="nombres">Nombre(s):</label>
+      <input type="text" id="nombres" name="nombres" placeholder="Escribe tu nombre(s)" required>
+      <label for="apellidos">Apellido(s):</label>
+      <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tu apellido(s)" required>
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico" required>
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono" required>
+      <label>Fecha de nacimiento:</label>
+      <div class="date-container">
+        <label for="año">Año</label>
+        <select name="año" id="año">
+          <script>
+            const currentYear = new Date().getFullYear();
+            const startYear = currentYear - 100; // 100 years ago
+            const endYear = currentYear-18; // current year
+            const yearSelect = document.getElementById('año');
+
+            for (let year = endYear; year >= startYear; year--) {
+              const option = document.createElement('option');
+              option.value = year;
+              option.textContent = year;
+              yearSelect.appendChild(option);
+            }
+          </script>
+        </select>
+        <label for="mes">Mes:</label>
+        <select name="mes" id="mes">
+          <option value="enero">Enero</option>
+          <option value="febrero">Febrero</option>
+          <option value="marzo">Marzo</option>
+          <option value="abril">Abril</option>
+          <option value="mayo">Mayo</option>
+          <option value="junio">Junio</option>
+          <option value="julio">Julio</option>
+          <option value="agosto">Agosto</option>
+          <option value="septiembre">Septiembre</option>
+          <option value="octubre">Octubre</option>
+          <option value="noviembre">Noviembre</option>
+          <option value="diciembre">Diciembre</option>
+        </select>
+        <label for="dia">Día:</label>
+        <select name="dia" id="dia"></select>
+      </div>
+      <button type="submit">Guardar informacion</button>
+    </form>
+    <div class="result-container" id="result-container"> 
+      <h3>Nombre completo:</h3>
+      <p id="nombreCompleto">Vacío</p>
+      <h3>Correo electrónico:</h3>
+      <p id="correoElectronico">Vacío</p>
+      <h3>Teléfono:</h3>
+      <p id="telefonoNumero">Vacío</p>
+      <h3>Fecha de nacimiento:</h3>
+      <p id="fechaNacimiento">Vacío</p>
+    </div>
+  </div>
+  
+</body>
+<script src="events.js"></script>
+</html>
