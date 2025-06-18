@@ -83,42 +83,73 @@ function actualizarDias() {
 }
 
 actualizarDias(); // Llamar a la función al cargar la página
-fechaResult.textContent = `${diaInput.value} de ${mesInput.value} de ${añoInput.value}`;
-//funciones para manejar los eventos de cambio
-nombresInput.addEventListener('input', function() {
-  if(this.value || apellidosInput.value) {
-  nombreResult.textContent = this.value + ' ' + apellidosInput.value;
-  }else{
+setFecha(); // Inicializar la fecha al cargar la página
+
+//funciones para actualizar los resultados de previsualización
+function setNombre() {
+  if(nombresInput.value || apellidosInput.value) {
+    nombreResult.textContent = nombresInput.value + ' ' + apellidosInput.value;
+  } else {
     nombreResult.textContent = 'Vacío';
   }
+}
+
+function setEmail() {
+  emailResult.textContent = emailInput.value || 'Vacío';
+}
+
+function setTelefono() {
+  telefonoResult.textContent = telefonoInput.value || 'Vacío';
+}
+
+function setFecha() {
+  fechaResult.textContent = `${diaInput.value} de ${mesInput.value} de ${añoInput.value}`;
+}
+//funciones para manejar los eventos de cambio
+nombresInput.addEventListener('input', function() {
+  setNombre();
 });
 
 apellidosInput.addEventListener('input', function() {
-  if(this.value || nombresInput.value) {
-    nombreResult.textContent = nombresInput.value + ' ' + this.value;
-  }else{
-    nombreResult.textContent = 'Vacío';
-  }
+  setNombre();
 });
 
 emailInput.addEventListener('input', function() {
-  emailResult.textContent = this.value || 'Vacío';
+  setEmail();
 });
 
 telefonoInput.addEventListener('input', function() {
-  telefonoResult.textContent = this.value || 'Vacío';
+  setTelefono();
 });
 
 mesInput.addEventListener('change', function() {
   actualizarDias();
-  fechaResult.textContent = `${diaInput.value} de ${this.value} de ${añoInput.value}`;
+  setFecha();
 });
 
 añoInput.addEventListener('input', function() {
   actualizarDias();
-  fechaResult.textContent = `${diaInput.value} de ${mesInput.value} de ${this.value}`;
+  setFecha();
 });
 
 diaInput.addEventListener('change', function() {
-  fechaResult.textContent = `${this.value} de ${mesInput.value} de ${añoInput.value}`;
+  setFecha();
+});
+
+// Manejar el evento de envío del formulario
+const formulario = document.getElementById('formulario');
+formulario.addEventListener('submit', function(event) {
+  event.preventDefault(); // Evitar el envío del formulario
+  
+  alert('Información guardada correctamente');
+  
+  // Limpiar el formulario
+  formulario.reset();
+  actualizarDias(); // Actualizar los días después de limpiar el formulario
+
+  //actualizar los resultados de previsualización
+  setNombre();
+  setEmail();
+  setTelefono();
+  setFecha();
 });

@@ -7,8 +7,11 @@
   <title>Document</title>
 </head>
 <body>
+  <header>
+    <h1>Registro de datos</h1>
+  </header>
   <div class="main-container">
-    <form id="formulario" class="formulario">
+    <form id="formulario" class="content">
       <label for="nombres">Nombre(s):</label>
       <input type="text" id="nombres" name="nombres" placeholder="Escribe tu nombre(s)" required>
       <label for="apellidos">Apellido(s):</label>
@@ -19,7 +22,7 @@
       <input type="tel" id="telefono" name="telefono" placeholder="Escribe tu número de teléfono" required>
       <label>Fecha de nacimiento:</label>
       <div class="date-container">
-        <label for="año">Año</label>
+        <label for="año">Año:</label>
         <select name="año" id="año">
           <script>
             const currentYear = new Date().getFullYear();
@@ -55,7 +58,7 @@
       </div>
       <button type="submit">Guardar informacion</button>
     </form>
-    <div class="result-container" id="result-container"> 
+    <div class="content" id="result-container"> 
       <h3>Nombre completo:</h3>
       <p id="nombreCompleto">Vacío</p>
       <h3>Correo electrónico:</h3>
@@ -66,7 +69,9 @@
       <p id="fechaNacimiento">Vacío</p>
     </div>
   </div>
-  
+  <footer class="footer">
+    <p>&copy; 2025 Sergio Carreon. DOM-practice.</p>
+  </footer>
 </body>
 <script src="events.js"></script>
 </html>
